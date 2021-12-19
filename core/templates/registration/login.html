@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+Log in
+{% endblock title %}
+
+{% block content %}
+    {% if form.errors %}
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert"> 
+      <strong> 
+        Invalid Credentials. Registered User Please Try Again. Create an account if not Registered.
+      </strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+<div class="text-center container w-25">
+    <form action="{% url 'login' %}" method="POST" class=" text-center">
+        {% csrf_token %}
+        <img class="mb-4" src="{% static 'core/images/CodeNotes.png' %}" alt="" width="200" height="150">
+        <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+        <div class="form-floating mb-1">
+          <input type="text" class="form-control" id="username" placeholder="username" name="username" required>
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-1">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="checkbox mb-1">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+      </form>
+</div>
+{% endblock content %}

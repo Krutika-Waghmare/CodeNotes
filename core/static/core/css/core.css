@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navigation Bar */
+
+.navbar-custom {
+    background-color: #FB9300;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #343F56;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2rem;
+    padding: 0.8rem 1rem;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-text {
+    color: #343F56;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color:#343F56;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 1rem;
+}
+
+.navbar-custom .nav-item:hover .nav-link {
+    color: #343F56;
+}
+
+
+/* Banner */
+
+.banner {
+    background-color: #343F56;
+    color: #FB9300;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
+    padding: 3% 10%;
+}
+
+.heading {
+    font-size: 3.5rem;
+    font-weight: 900;
+    padding: 2rem;
+    text-align: left;
+}
+
+.my-btn {
+    font-size: 3.5rem;
+    margin: 3.7rem;
+}
+
+.quotes-img {
+    display: block;
+    margin: 0.1rem 13rem;
+    width: 70%;
+}

@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+CodeNotes
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid banner">
+  <div class="row">
+    <div class="col-md-6 title">
+      <h1 class="heading">Explore Read Grow</h1>
+      <!-- <button type="button" class="btn btn-secondary btn-lg my_btn"><i class="fas fa-laptop"></i></button> -->
+      <a href="http://www.linkedin.com/in/krutika-waghmare"><button type="button" class="btn btn-outline-light btn-lg my-btn"><i class="fab fa-linkedin"></i></button></a>
+      <button type="button" class="btn btn-secondary btn-lg my-btn"><i class="fab fa-github"></i></button>
+      <a href="https://twitter.com/KrutikaWaghmare"><button type="button" class="btn btn-outline-light btn-lg my-btn"><i class="fab fa-twitter"></i></button></a>
+      
+    </div>
+    <div class="col-md-6">
+      <img class="quotes-img" src="{% static 'core/images/quotes.png' %}" alt="quotes-img">
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mb-2 my-5">
+    {% for post in posts %}
+    {% if post.published_date %}
+    <div class="col-md-6 my-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">{{post.published_date}}</div>
+          <p class="card-text mb-auto">{{post.text|safe|truncatewords:25}}</p>
+          <a href="{% url 'detail_post' id=post.id %}" class="stretched-link">Continue reading</a>
+        </div>
+        
+      </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

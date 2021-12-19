@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+<article class="post">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-8">
+                 <h2>{{ post.title }}</h2>
+           </div>
+           <div class="col-1">
+            {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            {% else %}
+            <time class="date">
+                {{ post.created_date }}
+            </time>
+            {% endif %}
+           </div>
+           {% if user.is_superuser %}
+           {% if post.published_date == Null %}
+           <div class="col-1">
+            <a class="btn btn-default" href="{% url 'publish_post' id=post.id %}">
+                <i class="far fa-paper-plane"></i>
+            </a>
+            </div>
+            {% else %}
+            <div class="col-1">
+                <a class="btn btn-default" href="{% url 'unpublish_post' id=post.id %}">
+                    <i class="fab fa-firstdraft"></i>
+                </a>
+                </div>
+           {% endif%}
+           <div class="col-1">
+            <a class="btn btn-default" href="{% url 'edit_post' id=post.id %}">
+                <i class="fas fa-pen"></i>
+            </a>
+            </div>
+            <div class="col-1">
+                <a class="btn btn-default" href="{% url 'delete_post' id=post.id %}">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+           {% endif %}
+        </div>
+    </div>
+    <p>{{ post.text|safe }}</p>
+</article>
+<div class="fb-like" data-href="{{request.build_absolute_uri}}" data-width="20px" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+<div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-width="" data-numposts="5"></div>
+</div>
+{% endblock content %}
